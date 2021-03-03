@@ -21,7 +21,7 @@ echo "<?php\n";
 use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use <?= $generator->indexWidgetType === 'grid' ? "kartik\\grid\\GridView;" : "yii\\widgets\\ListView;" ?>
-
+use backend\modules\admin\components\Helper;
 
 $this->title = <?= ($generator->pluralize) ? $generator->generateString(Inflector::pluralize(Inflector::camel2words($baseModelClass))) : $generator->generateString(Inflector::camel2words($baseModelClass)) ?>;
 $this->params['breadcrumbs'][] = $this->title;
@@ -95,6 +95,22 @@ if ($generator->indexWidgetType === 'grid'):
 <?php if($generator->saveAsNew): ?>
             'template' => '{save-as-new} {view} {update} {delete}',
             'buttons' => [
+		'view' => function ($url) {
+                     return Html::a('<span class="fas fa-eye"></span>', $url, ['title' => 'View']);
+                 },
+                 'update' => function ($url) {
+                    return Html::a('<span class="fas fa-pencil-alt"></span>', $url, ['title' => 'Edit']);
+                 },
+                'delete' => function ($url) {
+                    return  Html::a('<span class="fas fa-trash"></span>', $url,
+                       [
+                           'title' => 'Delete',
+                           'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                           'data-method' => 'post',
+                           'data-pjax' => '0',
+                       ]
+                    );
+                },
                 'save-as-new' => function ($url) {
                     return Html::a('<span class="fas fa-copy"></span>', $url, ['title' => 'Save As New']);
                 },
