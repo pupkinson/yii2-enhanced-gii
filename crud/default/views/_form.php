@@ -60,7 +60,7 @@ foreach ($relations as $name => $rel) {
             "                'row' => \\yii\\helpers\\ArrayHelper::toArray(\$model->$name),\n".
             "            ]),\n".
             "        ],\n";
-    }else if(isset($rel[$generator::REL_IS_MASTER]) && !$rel[$generator::REL_IS_MASTER]){
+    }else if(isset($rel[$generator::REL_IS_MASTER]) && !$rel[$generator::REL_IS_MASTER] && !in_array($name, $generator->skippedRelations)){
         $forms .= "        [\n".
             "            'label' => '<i class=\"glyphicon glyphicon-book\"></i> ' . Html::encode(".$generator->generateString($rel[$generator::REL_CLASS])."),\n".
             "            'content' => \$this->render('_form".$rel[$generator::FK_FIELD_NAME]."', [\n" .
