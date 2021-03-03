@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php if ($generator->pdf): ?>
 <?= "<?= " ?>
             <?= "
-             Html::a('<i class=\"fa glyphicon glyphicon-hand-up\"></i> ' . " . $generator->generateString('PDF') . ", 
+             Html::a('<i class=\"fa fas fa-hand-point-up\"></i> ' . " . $generator->generateString('PDF') . ", 
                 ['pdf', $urlParams],
                 [
                     'class' => 'btn btn-danger',
@@ -120,7 +120,7 @@ if($provider<?= $rel[1] ?>->totalCount){
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-<?= Inflector::camel2id($rel[3])?>']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-            'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode(<?= $generator->generateString(Inflector::camel2words($rel[1])) ?>),
+            'heading' => '<span class="fas fa-book"></span> ' . Html::encode(<?= $generator->generateString(Inflector::camel2words($rel[1])) ?>),
         ],
 <?php if(!$generator->pdf): ?>
         'export' => false,
