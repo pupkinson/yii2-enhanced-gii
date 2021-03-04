@@ -14,6 +14,11 @@ echo $form->field($generator, 'db');
 echo $form->field($generator, 'tableName');
 echo $form->field($generator, 'nsModel');
 echo $form->field($generator, 'modelClass');
+echo $form->field($generator, 'generateRelations')->dropDownList([
+    $generator::RELATIONS_NONE => 'No relations',
+    $generator::RELATIONS_ALL => 'All relations',
+    $generator::RELATIONS_ALL_INVERSE => 'All relations with inverse',
+    ]);
 echo $form->field($generator, 'skippedRelations');
 echo $form->field($generator, 'nameAttribute');
 echo $form->field($generator, 'hiddenColumns');
