@@ -76,7 +76,11 @@ class <?= $className ?> extends <?= ($isTree) ? '\kartik\tree\models\Tree' . "\n
     */
     public function relationNames()
     {
+<?php if (array_diff(array_keys($relations),$generator->skippedRelations)): ?>
         return [<?= "\n            '" . implode("',\n            '", array_diff(array_keys($relations),$generator->skippedRelations)) . "'\n        " ?>];
+<?php else: ?>
+        return [];
+<?php endif; ?>
     }
 
 <?php endif; ?>
