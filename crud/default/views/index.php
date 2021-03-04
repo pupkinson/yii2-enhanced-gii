@@ -21,7 +21,6 @@ echo "<?php\n";
 use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use <?= $generator->indexWidgetType === 'grid' ? "kartik\\grid\\GridView;" : "yii\\widgets\\ListView;" ?>
-use backend\modules\admin\components\Helper;
 
 $this->title = <?= ($generator->pluralize) ? $generator->generateString(Inflector::pluralize(Inflector::camel2words($baseModelClass))) : $generator->generateString(Inflector::camel2words($baseModelClass)) ?>;
 $this->params['breadcrumbs'][] = $this->title;
