@@ -382,7 +382,7 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
             }
             
             if($this->saveAsNew){
-                $files[] = new CodeFile("$viewPath/saveAsNew.php", $this->render("views/saveAsNew.php", [
+                $files[] = new CodeFile("$viewPath/copy.php", $this->render("views/copy.php", [
                     'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
                 ]));
             }
