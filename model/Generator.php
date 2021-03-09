@@ -503,5 +503,23 @@ class Generator extends BaseGenerator {
 
         return $rules;
     }
+    
+    public function generateScenarios($table) {
+        $scenarios = [];
+        $skipped = [$this->optimisticLock, $this->createdAt, $this->updatedAt, $this->createdBy, $this->updatedBy, $this->deletedBy, $this->deletedAt];
 
+        foreach ($table->columns as $column) {
+            if ($column->autoIncrement) {
+                continue;
+            }
+            if (in_array($column->name, $skipped)) {
+                continue;
+            }
+            $scenarios[] = "'" . $column->name . "'";
+        }
+
+        return $scenarios;
+    }
+
+}
 }
