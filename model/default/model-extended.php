@@ -28,10 +28,20 @@ class <?= $className ?> extends Base<?= $className . "\n" ?>
     /**
      * @inheritdoc
      */
-    public function rules()
+    const SCENARIO_VIEW = 'view';
+    const SCENARIO_CREATE = 'create';
+    const SCENARIO_UPDATE = 'update';
+    const SCENARIO_COPY = 'copy';
+
+    public scenarios ()
     {
-        return array_replace_recursive(parent::rules(),
-	    [<?= "\n            " . implode(",\n            ", $rules) . "\n        " ?>]);
+        $scenarios = [
+            self::SCENARIO_CREATE => [<?= implode(',', $scenarios) ?>],
+            self::SCENARIO_UPDATE => [<?= implode(',', $scenarios) ?>],
+            self::SCENARIO_COPY => [<?= implode(',', $scenarios) ?>],
+        ];
+        $scenarios += parent::scenarios();
+        return $scenarios;
     }
 	
 <?php if ($generator->generateAttributeHints): ?>
