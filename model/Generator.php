@@ -326,6 +326,7 @@ class Generator extends BaseGenerator {
                 'tableSchema' => $tableSchema,
                 'labels' => $this->generateLabels($tableSchema),
                 'rules' => $this->generateRules($tableSchema),
+                'scenarios' => $this->generateScenarios($tableSchema),
                 'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
                 'isTree' => $this->isTree
             ];
