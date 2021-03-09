@@ -33,7 +33,7 @@ class <?= $className ?> extends Base<?= $className . "\n" ?>
     const SCENARIO_UPDATE = 'update';
     const SCENARIO_COPY = 'copy';
 
-    public scenarios ()
+    public function scenarios()
     {
         $scenarios = [
             self::SCENARIO_CREATE => [<?= implode(',', $scenarios) ?>],
